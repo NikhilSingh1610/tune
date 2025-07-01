@@ -3,11 +3,12 @@ import react from '@vitejs/plugin-react';
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 
 export default defineConfig({
+  base: './', // 👈 required for Render or GitHub Pages
   plugins: [react()],
   optimizeDeps: {
     esbuildOptions: {
       define: {
-        global: 'globalThis' // Fixes "global is not defined"
+        global: 'globalThis'
       },
       plugins: [
         NodeGlobalsPolyfillPlugin({
